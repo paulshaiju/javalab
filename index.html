@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>readme.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+	padding: 0 26px;
+	line-height: var(--vscode-markdown-line-height, 22px);
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left-width: 5px;
+	border-left-style: solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre code {
+	color: var(--vscode-editor-foreground);
+	tab-size: 4;
+}
+
+/** Theming */
+
+.vscode-light pre {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+	padding: 0 12px;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+code {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+</head>
+<body>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<h1 id="csl-203-object-oriented-programming-labin-java---program-list">CSL 203 Object Oriented Programming Lab(in JAVA) - Program List</h1>
+<h2 id="jyothi-engineering-college-cheruthuruthy-thrissur-kerala"><a href="https://jecc.ac.in/">Jyothi Engineering College, Cheruthuruthy, Thrissur, Kerala</a></h2>
+<h3 id="department-of-computer-science--engineering"><a href="https://jecc.ac.in/departments/computer_science_engineering">Department of Computer Science &amp; Engineering</a></h3>
+<h4 id="2020---2024-a-batch">2020 - 2024 A Batch</h4>
+<h5 id="march-2021">March 2021</h5>
+<hr>
+<h2 id=""><a href="https://github.com/paulshaiju/javalab"><img src="https://img.shields.io/badge/Download-Link-brightgreen" alt=""></a></h2>
+<p><a href="mailto:aadil.cse20@jecc.ac.in"><img src="https://img.shields.io/badge/Programs by-Aadil Mohammed Sayad-orange" alt=""></a></p>
+<p><a href="https://github.com/paulshaiju/javalab/blob/master/INSTALL_java_geany_on_windows.pdf"><img src="https://img.shields.io/badge/JAVA &amp; GEANY-Installation on Windows -yellow" alt=""></a></p>
+<p><a href="https://github.com/paulshaiju/javalab/blob/master/INSTALL_mysql_server_on_windows.pdf"><img src="https://img.shields.io/badge/MySQL Server-Installation on Windows -ff69b4" alt=""></a></p>
+<h2 id=""><a href="https://github.com/paulshaiju/javalab/blob/master/sql_commands.pdf"><img src="https://img.shields.io/badge/SQL Basic Commands-Help -blueviolet" alt=""></a></h2>
+<p><a href="https://github.com/paulshaiju/javalab/tree/master/Cycle-1"><img src="https://img.shields.io/badge/Cycle-1-blue" alt=""></a></p>
+<ol>
+<li>Write a java program to print HelloWorld.</li>
+<li>Write a java program to add two integer numbers.</li>
+<li>Write a java program to find the largest of two numbers. (using If-else)</li>
+<li>Write a java program to find the sum of first n natural numbers. (using for loop)</li>
+<li>Write a java program to check whether a given number is prime or not. (using flag variable)</li>
+<li>Write a java program to check whether a given number is perfect or not.</li>
+<li>Write a java program to find the sum of the digits of a given number. (using while or do-while loop)</li>
+<li>Write a java program to find the reverse of a number.</li>
+<li>Write a java program to check whether a given number is palindrome or not.</li>
+<li>Write a java program to read and display Student details.</li>
+<li>Write a java program to check whether a given year is a leap year or not.</li>
+<li>Write a java program to find the roots of a quadratic equation(including imaginary roots).</li>
+<li>Write a java program to implement a basic calculator(using a switch case).</li>
+<li>Write a java program to check whether a given number is Armstrong no or not(3-digit Armstrong no).</li>
+<li>Write a java program to find the factorial of a number.</li>
+<li>Write a java program to print the Fibonacci series.</li>
+<li>Write a java program to find the factorial of a number using command-line arguments.</li>
+</ol>
+<hr>
+<p><a href="https://github.com/paulshaiju/javalab/tree/master/Cycle-2"><img src="https://img.shields.io/badge/Cycle-2-blue" alt=""></a></p>
+<ol start="18">
+<li>Write a java program to implement linear search(using a 1D array)</li>
+<li>Write a java program to find the largest of n numbers</li>
+<li>Write a java program to implement Bubble sort.</li>
+<li>Write a java program to find the second largest and second smallest number in an array</li>
+<li>Write a java program to implement Binary Search.</li>
+<li>Write a java program to add two matrices (using a 2D array)</li>
+<li>Write a java program to find the transpose of a matrix.</li>
+<li>Write a java program to multiply two matrices</li>
+<li>Write a java program to sort an array using the sort method in Arrays Class (use for-each to print the array).</li>
+<li>Write a java program to print the reverse of a string using the reverse method in StringBuilder/StringBuffer
+Class(use for-each to print the reverse)</li>
+<li>Write a java program to check whether a given string is palindrome or not (using charAt method in String
+class).</li>
+<li>Write a java program to sort a given set of strings. (use sort method and for-each construct)</li>
+<li>Write a java program to find the factorial of a number using recursion.</li>
+<li>Write a java program to find the sum of the digits of a number using recursion.</li>
+</ol>
+<hr>
+<p><a href="https://github.com/paulshaiju/javalab/tree/master/Cycle-3"><img src="https://img.shields.io/badge/Cycle-3-blue" alt=""></a></p>
+<ol start="32">
+<li>Create a class Box with instance variables length, width, and height. Include a method volume to compute
+the volume of the box. Create another class BoxDemo with the main function that creates an object of class Box
+named mybox1 and set the values for instance variables(length, width, and height). Invoke the function volume
+in Box to compute the volume of the created object mybox1.</li>
+<li>Write a Java program to implement Stack using arrays.</li>
+<li>Design a class to represent a bank account. Include the following members:
+Data Members:
+Name of the depositor
+Account Number
+Type of Account
+Balance amount in the account
+Methods :
+To deposit an amount
+To withdraw an amount after checking the balance
+To display the name and balance
+Incorporate default and parameterized constructor to provide initial values</li>
+<li>Write a Java program that creates a class named 'Employee' having the following members: Name, Age,
+Phone number, Address, Salary. It also has a method named 'printSalary( )' which prints the salary of
+the Employee. Two classes 'Officer' and 'Manager' inherit the 'Employee' class. The 'Officer' and
+'Manager' classes have data members 'specialization' and 'department' respectively. Now, assign a name, age,
+phone number, address, and salary to an officer and a manager by making an object of both of these classes and
+print the same.</li>
+<li>Write two Java classes, Employee and Engineer. The engineer should inherit from Employee class.
+Employee class to have two methods display() and calcSalary(). Write a program to display the engineer salary
+and to display from Employee class using a single object instantiation (i.e., only one object creation is allowed).
+<ul>
+<li>display() only prints the name of the class and does not return any value. Ex. “ Name of class is Employee.”</li>
+<li>calcSalary() in Employee displays “Salary of employee is 10000” and calcSalary() in Engineer displays“Salary of
+employee is 20000.”</li>
+</ul>
+</li>
+<li>Write a java program to create an abstract class named Shape that contains an empty method named
+numberOfSides( ). Provide three classes named Rectangle, Triangle, and Hexagon such that each one of the
+classes extends the class Shape. Each one of the classes contains only the method numberOfSides( ) that shows
+the number of sides in the given geometrical structures.</li>
+<li>Create a package ‘studpack’ which incorporates Student class and Sports interface. Create a Result class that
+extends Student class and implements a sports interface to display the total marks. The details of the classes and
+interfaces described below. Use appropriate access specifier as per the requirement. (*method, -variable) Create
+a java program Hybrid.java that imports Result class from studpack and display the total for 5 students.</li>
+<li>Write a Java program that shows the usage of try, catch, and finally</li>
+<li>Write a Java program to find the factorial of a number using BufferedReader Class</li>
+<li>Write a Java program to copy the contents of one file to another file using FileReader/FileWriter Class.</li>
+<li>Write a Java program that reads a line of integers, and then displays each integer, and the sum of all the
+integers (Use StringTokenizer class of java.util)</li>
+<li>Write a Java program to copy the contents of one file to another file using FileInputStream and
+FileOutputStream classes.</li>
+<li>Create a Java package named ‘NewPackage’ which consist of a class called ‘NewClass’. ‘NewClass’ hava a
+method ‘parityCheck’ which check whether a given number is odd or even and return a string as a result. Import
+this package in another class and call the method ‘parityCheck’.</li>
+</ol>
+<hr>
+<p><a href="https://github.com/paulshaiju/javalab/tree/master/Cycle-4"><img src="https://img.shields.io/badge/Cycle-4-blue" alt=""></a></p>
+<ol start="45">
+<li>Write a java program to implement Stack using Collections Framework</li>
+<li>Write a java program to implement Queue using Collections Framework (list elements using iterator
+interface)</li>
+<li>Write a java program to implement ArrayList using Collections Framework</li>
+<li>Write a java program that creates multiple child threads to print odd and even numbers.(extending
+Thread class)</li>
+<li>Write a Java program that implements a multi-threaded program which has three threads. First thread
+generates a random integer every 1 second. If the value is even, second thread computes the square of the
+number and prints. If the value is odd the third thread will print the value of cube of the number. (implements
+Runnable Interface and Random Class)</li>
+<li>Write a Java program for the following: i) Create a doubly linked list of elements. ii) Delete a given
+element from the above list. iii) Display the contents of the list after deletion.(using Colections Framework-
+LinkedList Interface)</li>
+<li>Write a Java GUI program to add two numbers. (Using Swing package)</li>
+<li>Write a Java GUI program to find the factorial of a number.</li>
+<li>Write a Java GUI program to check whether a given string is palindrome or not. (Use StringBuilder class).</li>
+<li>Write a Java GUI program to implement a basic calculator.</li>
+<li>Implement a Registration Form in Java.</li>
+<li>Execute basic SQL Commands.</li>
+<li>Write a Java program to insert, delete and display all records from a table using JDBC.</li>
+</ol>
+<hr>
+
+</body>
+</html>
